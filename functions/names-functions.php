@@ -3,7 +3,6 @@
 function load_full_names($fileName) {
   $lineNumber = 0;
 
-// Load up the array
   $FH = fopen("$fileName", "r");
   $nextName = fgets($FH);
 
@@ -16,4 +15,31 @@ function load_full_names($fileName) {
   $nextName = fgets($FH);
   }
   return $fullNames;
+}
+
+function load_first_names($fullNames) {
+  foreach($fullNames as $fullName) {
+    $startHere = strpos($fullName, ",") + 1;
+    $firstNames[] = trim(substr($fullName, $startHere));
+  }
+  return $firstNames;
+}
+
+function load_last_names($fullNames) {
+  foreach ($fullNames as $fullName) {
+    $stopHere = strpos($fullName, ",");
+    $lastNames[] = substr($fullName, 0, $stopHere);
+  }
+  return $lastNames;
+}
+
+function load_valid_names($fullNames, $lastNames, $firstNames) {
+  for($i = 0; $i < sizeof($fullNames); $i++) {
+    if(ctype_alpha($lastNames[$i].$firstNames[$i])) {
+      $validFirstNames[$i] = $firstNames[$i];
+      $validLastNames[$i] = $lastNames[$i];
+      $validFullNames[$i] = $validLastNames[$i] . ", " . $validFirstNames[$i];
+    }
+  }
+  return $validFullNames;
 }
