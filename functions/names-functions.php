@@ -61,3 +61,33 @@ function load_valid_first_names($firstNames) {
   }
   return $validFirstNames;
 }
+
+function most_common_first($validFirstNames) {
+  $commonFirstName = array_count_values($validFirstNames);
+  arsort($commonFirstName);
+  return(key($commonFirstName));
+}
+
+function count_common_first($validFirstNames, $commonFirstName) {
+  $countFirst = 0;
+  foreach ($validFirstNames as $validFirst) {
+    if($validFirst == $commonFirstName)
+    $countFirst++;
+  }
+  return $countFirst;
+}
+
+function most_common_last($validLastNames) {
+  $commonLastName = array_count_values($validLastNames);
+  arsort($commonLastName);
+  return(key($commonLastName));
+}
+
+function count_common_last($validLastNames, $commonLastName) {
+  $countLast = 0;
+  foreach ($validLastNames as $validFirst) {
+    if($validFirst == $commonLastName)
+    $countLast++;
+  }
+  return $countLast;
+}

@@ -5,17 +5,18 @@ include 'functions/names-functions.php';
 $fileName = 'names-short-list.txt';
 
 $fullNames = load_full_names($fileName);
-
 $firstNames = load_first_names($fullNames);
-
 $lastNames = load_last_names($fullNames);
 
 $validFullNames = load_valid_names($fullNames, $lastNames, $firstNames);
-
 $validLastNames = load_valid_last_names($lastNames);
-
 $validFirstNames = load_valid_first_names($firstNames);
 
+$commonFirstName = most_common_first($validFirstNames);
+$countFirst = count_common_first($validFirstNames, $commonFirstName);
+
+$commonLastName = most_common_last($validLastNames);
+$countLast = count_common_last($validLastNames, $commonLastName);
 
 // ~~~~~~~~~~~~ Display results ~~~~~~~~~~~~ //
 
@@ -54,4 +55,8 @@ echo '<h2>Unique First Names</h2>';
 $uniqueFirstNames = (array_unique($validFirstNames));
 echo ("<p>There are " . sizeof($uniqueFirstNames) . " unique first names</p>");
 
+echo '<h2>Most Common Names</h2>';
+
+echo '<p>The most common first name is ' . $commonFirstName . ', which appears ' . $countFirst . ' times.</p>';
+echo '<p>The most common last name is ' . $commonLastName . ', which appears ' . $countLast . ' times.</p>';
 ?>
