@@ -43,3 +43,21 @@ function load_valid_names($fullNames, $lastNames, $firstNames) {
   }
   return $validFullNames;
 }
+
+function load_valid_last_names($lastNames) {
+  for($i = 0; $i < sizeof($lastNames); $i++) {
+    if(ctype_alpha($lastNames[$i])) {
+      $validLastNames[$i] = $lastNames[$i];
+    }
+  }
+  return $validLastNames;
+}
+
+function load_valid_first_names($firstNames) {
+  for($i = 0; $i < sizeof($firstNames); $i++) {
+    if(ctype_alpha($firstNames[$i])) {
+      $validFirstNames[$i] = $firstNames[$i];
+    }
+  }
+  return $validFirstNames;
+}

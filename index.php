@@ -12,6 +12,10 @@ $lastNames = load_last_names($fullNames);
 
 $validFullNames = load_valid_names($fullNames, $lastNames, $firstNames);
 
+$validLastNames = load_valid_last_names($lastNames);
+
+$validFirstNames = load_valid_first_names($firstNames);
+
 
 // ~~~~~~~~~~~~ Display results ~~~~~~~~~~~~ //
 
@@ -37,7 +41,17 @@ echo '<h2>Unique Names</h2>';
 $uniqueValidNames = (array_unique($validFullNames));
 echo ("<p>There are " . sizeof($uniqueValidNames) . " Unique names</p>");
 echo '<ul style="list-style-type:none">';    
-    foreach($uniqueValidNames as $uniqueValidNames) {
-        echo "<li>$uniqueValidNames</li>";
+    foreach($uniqueValidNames as $uniqueValidName) {
+        echo "<li>$uniqueValidName</li>";
     }
+echo "</ul>";
+
+echo '<h2>Unique Last Names</h2>';
+$uniqueLastNames = (array_unique($validLastNames));
+echo ("<p>There are " . sizeof($uniqueLastNames) . " unique last names</p>");
+
+echo '<h2>Unique First Names</h2>';
+$uniqueFirstNames = (array_unique($validFirstNames));
+echo ("<p>There are " . sizeof($uniqueFirstNames) . " unique first names</p>");
+
 ?>
